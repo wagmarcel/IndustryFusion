@@ -28,7 +28,7 @@ insert into company (id, version, description, image_key, name, type) values (ne
 
 
 -- shift_settings
-insert into shift_settings (id, version, week_start) values (nextval('idgen_shift_settings'), 0, 'MONDAY');
+/*insert into shift_settings (id, version, week_start) values (nextval('idgen_shift_settings'), 0, 'MONDAY');
 insert into shift_settings (id, version, week_start) values (nextval('idgen_shift_settings'), 0, 'MONDAY');
 insert into shift_settings (id, version, week_start) values (nextval('idgen_shift_settings'), 0, 'MONDAY');
 insert into shift_settings (id, version, week_start) values (nextval('idgen_shift_settings'), 0, 'MONDAY');
@@ -195,16 +195,16 @@ insert into shift (id, version, name, start_minutes, end_minutes, shifts_of_day_
 insert into shift (id, version, name, start_minutes, end_minutes, shifts_of_day_id) values (nextval('idgen_shift'), 0, 'Night shift',    21 * 60, 4 * 60 + 30,  46);
 insert into shift (id, version, name, start_minutes, end_minutes, shifts_of_day_id) values (nextval('idgen_shift'), 0, 'Morning shift', 7 * 60, 15 * 60 + 30,   47);
 insert into shift (id, version, name, start_minutes, end_minutes, shifts_of_day_id) values (nextval('idgen_shift'), 0, 'Dayshift',      11 * 60, 18 * 60 + 30,  47);
--- 48 and 49 are weekend
+-- 48 and 49 are weekend*/
 
 -- factory_site (shift_settings are connected via cascade all)
-insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id, shift_settings_id) values (nextval('idgen_factory_site'), 0, 'Bad Wörishofen', 80, 'assets/040c6174-8e62-42b9-bf52-0985ad69ed5b_microstep_standort_1.jpg', 48.019610, 'Rudolf-Diesel-Straße 16', '', 10.603630, 'MicroStep', 'HEADQUARTER', '86825', 2, 1);
-insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id, shift_settings_id) values (nextval('idgen_factory_site'), 0, 'Coesfeld', 80, 'assets/055c6174-8e62-42b9-bf52-0985ad69ed5b_teka_standort_1.jpg', 51.916250, 'Millenkamp 9', '', 7.181240, 'Teka', 'FABRICATION', '48653', 2, 2);
-insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id, shift_settings_id) values (nextval('idgen_factory_site'), 0, 'Neustadt (Wied)', 80, 'assets/021c6174-8e62-42b9-bf52-0985ad69ed5b_ibeda_standort_1.jpg', 50.62504, 'Bahnhofstraße 27', '', 7.43335, 'Ibeda', 'FABRICATION', '53577', 2, 3);
-insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id, shift_settings_id) values (nextval('idgen_factory_site'), 0, 'Baden-Baden', 80, 'assets/003c6174-8e62-42b9-bf52-0985ad69ed5b_arku_standort_1.jpg', 48.812312, 'Siemensstrasse 11', '', 8.217716, 'ARKU', 'HEADQUARTER', '76532', 2, 4);
-insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id, shift_settings_id) values (nextval('idgen_factory_site'), 0, 'Weinböhla', 80, 'assets/045c6174-8e62-42b9-bf52-0985ad69ed5b_novus_standort_1.jpg', 51.14999, 'Zur alten Elektrowärme 9', '', 13.54230, 'Novus air', 'FABRICATION', '01689', 2, 5);
--- insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id, shift_settings_id) values (nextval('idgen_factory_site'), 0, 'Vahrn', 105, 'assets/057c6174-8e62-42b9-bf52-0985ad69ed5b_wfmechanik_standort_1.jpg', 46.73590, 'Eisackstraße 11', '', 11.64723, 'WF Mechanik', 'FABRICATION', '39040', 10, 6);
-insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id, shift_settings_id) values (nextval('idgen_factory_site'), 0, 'Goldach', 206, 'assets/050c6174-8e62-42b9-bf52-0985ad69ed5b_stuermsfs_standort_1.jpg', 47.482330, 'Langrütistrasse 20', '', 9.476290, 'Fertigung Goldach', 'FABRICATION', '9403', 11, 7);
+insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id) values (nextval('idgen_factory_site'), 0, 'Bad Wörishofen', 80, 'assets/040c6174-8e62-42b9-bf52-0985ad69ed5b_microstep_standort_1.jpg', 48.019610, 'Rudolf-Diesel-Straße 16', '', 10.603630, 'MicroStep', 'HEADQUARTER', '86825', 2);
+insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id) values (nextval('idgen_factory_site'), 0, 'Coesfeld', 80, 'assets/055c6174-8e62-42b9-bf52-0985ad69ed5b_teka_standort_1.jpg', 51.916250, 'Millenkamp 9', '', 7.181240, 'Teka', 'FABRICATION', '48653', 2);
+insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id) values (nextval('idgen_factory_site'), 0, 'Neustadt (Wied)', 80, 'assets/021c6174-8e62-42b9-bf52-0985ad69ed5b_ibeda_standort_1.jpg', 50.62504, 'Bahnhofstraße 27', '', 7.43335, 'Ibeda', 'FABRICATION', '53577', 2);
+insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id) values (nextval('idgen_factory_site'), 0, 'Baden-Baden', 80, 'assets/003c6174-8e62-42b9-bf52-0985ad69ed5b_arku_standort_1.jpg', 48.812312, 'Siemensstrasse 11', '', 8.217716, 'ARKU', 'HEADQUARTER', '76532', 2);
+insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id) values (nextval('idgen_factory_site'), 0, 'Weinböhla', 80, 'assets/045c6174-8e62-42b9-bf52-0985ad69ed5b_novus_standort_1.jpg', 51.14999, 'Zur alten Elektrowärme 9', '', 13.54230, 'Novus air', 'FABRICATION', '01689', 2);
+-- insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id) values (nextval('idgen_factory_site'), 0, 'Vahrn', 105, 'assets/057c6174-8e62-42b9-bf52-0985ad69ed5b_wfmechanik_standort_1.jpg', 46.73590, 'Eisackstraße 11', '', 11.64723, 'WF Mechanik', 'FABRICATION', '39040', 10);
+insert into factory_site (id, version, city, country_id, image_key, latitude, line1, line2, longitude, name, type, zip, company_id) values (nextval('idgen_factory_site'), 0, 'Goldach', 206, 'assets/050c6174-8e62-42b9-bf52-0985ad69ed5b_stuermsfs_standort_1.jpg', 47.482330, 'Langrütistrasse 20', '', 9.476290, 'Fertigung Goldach', 'FABRICATION', '9403', 11);
 
 -- room
 insert into room (id, version, image_key, name, description, factory_site_id) values (nextval('idgen_room'), 0, null, 'Showroom', 'Showroom', 1);
