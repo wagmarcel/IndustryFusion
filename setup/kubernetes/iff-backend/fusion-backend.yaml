@@ -4,6 +4,7 @@ metadata:
   labels:
     app: fusion-backend
   name: fusion-backend
+  namespace: iff-backend
 spec:
   ports:
   - port: 8080
@@ -15,6 +16,7 @@ kind: Deployment
 metadata:
   annotations:
   name: fusion-backend
+  namespace: iff-backend
   labels:
     app: fusion-backend
 spec:
