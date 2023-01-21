@@ -24,7 +24,7 @@ export const environment = {
   production: false,
   apiUrlPrefix: 'api',
   kairosApiUrlPrefix: 'frontend.oisp:4003/api/v1',
-  alertaApiUrlPrefix: 'https://alerta.local/api',
+  alertaApiUrlPrefix: 'http://alerta.local/api',
   alertaApiKey: 'YsMQtkPYGTcxhuzlV0Z5iJFjjgFRw3Px',
   alertsUpdateIntervalMs: 10000,
   dataUpdateIntervalMs: 10000,

@@ -1,6 +1,6 @@
 module.exports = {
   "/api": {
-    "target": "http://fusion-backend.iff-backend:8080",
+    "target": "http://localhost:8080",
     "secure": false,
     "pathRewrite": {
       "^/api": ""

@@ -20,9 +20,9 @@ spring:
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
-    url: jdbc:postgresql://localhost:5432/postgresdb
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://acid-cluster.iff-backend:5432/foo
+    username: testuser
+    password: dU15XF7qWQuTZhw3chylPtKmWgzZUzQudsQJj8CO1hYUXxxjEBOkKR1Yp4SANaBP
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
@@ -32,15 +32,15 @@ spring:
     database: postgresql
 
 keycloak:
-  realm: OISP
+  realm: iff
   resource: fusion-backend
-  auth-server-url: http://localhost:4200/auth/
+  auth-server-url: http://keycloak.local/auth/
   ssl-required: external
   public-client: false
   principal-attribute: preferred_username
   verify-token-audience: true
   credentials:
-    secret: <secret must be set>
+    secret: SDAcNhQPDNR7AWNKNGu8wT4TKqD9uFy4
   bearer-only: true
   use-resource-role-mappings: true
 
@@ -50,15 +50,5 @@ logging:
 
 object-storage:
   server-type: minio
-  server-url: http://localhost:9000
+  server-url: http://minio.iff
   buckets-prefix: if
-
-
-fusionbackend:
-  modelrepo-sync-active: false
-  modelrepo-url: git@github.com:IndustryFusion/fusionmodels.git
-  modelrepo-privatekey-path: C:\Users\mreuder/.ssh/id_rsa
-
-ngsi-broker:
-  server-url: "http://localhost:9090"
-
