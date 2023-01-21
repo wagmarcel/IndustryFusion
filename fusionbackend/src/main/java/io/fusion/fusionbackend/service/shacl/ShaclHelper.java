@@ -37,7 +37,7 @@ public class ShaclHelper {
     }
 
     public static String createUnitIri(Unit unit) {
-        return NameSpaces.UNIT.getPath() + escapeTurtleObjectName(unit.getName());
+        return NameSpaces.UNIT.getPath() + toCamelCase(escapeTurtleObjectName(unit.getName()));
     }
 
     public static String createAssetTypeIri(AssetType assetType) {
@@ -46,6 +46,14 @@ public class ShaclHelper {
 
     public interface LambdaWrapper<T> {
         void execute(T shape);
+    }
+
+    public static String createHasClassIri(String name) {
+        return NameSpaces.IF.getPath() + "has" + toCamelCase(escapeTurtleObjectName(name));
+    }
+
+    public static String createClassIri(String name) {
+        return NameSpaces.IF.getPath() + toCamelCase(escapeTurtleObjectName(name));
     }
 
     public static String createIriIfNeeded(String candidate) {
@@ -67,7 +75,8 @@ public class ShaclHelper {
     }
 
     public static String escapeTurtleObjectName(String object) {
-        return toCamelCase(object.replaceAll("[<\"'=;()>:?.*]", "").replaceAll("_", " "));
+        //return toCamelCase(object.replaceAll("[<\"'=;()>:?.*]", "").replaceAll("_", " "));
+        return object.replaceAll("[<\"'=;()>:?.*]", "").replaceAll("_", " ");
     }
 
     public static String toCamelCase(String value) {
