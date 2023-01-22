@@ -22,7 +22,7 @@ import { KeycloakConfig } from 'keycloak-js';
 
 export const environment = {
   production: false,
-  apiUrlPrefix: 'api',
+  apiUrlPrefix: '/fusionbackend',
   kairosApiUrlPrefix: 'frontend.oisp:4003/api/v1',
   alertaApiUrlPrefix: 'http://alerta.local/api',
   alertaApiKey: 'YsMQtkPYGTcxhuzlV0Z5iJFjjgFRw3Px',
