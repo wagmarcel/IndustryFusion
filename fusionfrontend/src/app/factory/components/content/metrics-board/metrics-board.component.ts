@@ -24,6 +24,7 @@ import { environment } from '../../../../../environments/environment';
 import { takeUntil, tap } from 'rxjs/operators';
 import { NgsiLdService } from '../../../../core/services/api/ngsi-ld.service';
 import { ngsiLdLatestKeyValues } from '../../../../core/models/kairos.model';
+//import { DetailService } from '@clr/angular/data/datagrid/providers/detail.service';
 
 @Component({
   selector: 'app-metrics-board',
