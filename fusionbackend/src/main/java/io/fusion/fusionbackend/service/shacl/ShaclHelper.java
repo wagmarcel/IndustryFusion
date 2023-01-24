@@ -32,8 +32,11 @@ import java.util.stream.Collectors;
 public class ShaclHelper {
 
     public static String createFieldIri(Field field) {
-
-        return NameSpaces.FIELD.getPath() + escapeTurtleObjectName(field.getName());
+        if (isIri(field.getName())) {
+            return field.getName();
+        } else {
+            return NameSpaces.FIELD.getPath() + escapeTurtleObjectName(field.getName());
+        }
     }
 
     public static String createUnitIri(Unit unit) {
@@ -41,7 +44,11 @@ public class ShaclHelper {
     }
 
     public static String createAssetTypeIri(AssetType assetType) {
-        return NameSpaces.ASSET_TYPE.getPath() + escapeTurtleObjectName(assetType.getName());
+        if (isIri(assetType.getName())) {
+            return assetType.getName();
+        } else {
+            return NameSpaces.ASSET_TYPE.getPath() + escapeTurtleObjectName(assetType.getName());
+        }
     }
 
     public interface LambdaWrapper<T> {
@@ -49,16 +56,24 @@ public class ShaclHelper {
     }
 
     public static String createHasClassIri(String name) {
-        return NameSpaces.IF.getPath() + "has" + toCamelCase(escapeTurtleObjectName(name));
+        if (isIri(name)) {
+            return name;
+        } else {
+            return NameSpaces.IF.getPath() + "has" + toCamelCase(escapeTurtleObjectName(name));
+        }
     }
 
     public static String createClassIri(String name) {
-        return NameSpaces.IF.getPath() + toCamelCase(escapeTurtleObjectName(name));
+        if (isIri(name)) {
+            return name;
+        } else {
+            return NameSpaces.IF.getPath() + toCamelCase(escapeTurtleObjectName(name));
+        }
     }
 
     public static String createIriIfNeeded(String candidate) {
         return isIri(candidate)
-                ? escapeTurtleObjectName(candidate)
+                ? candidate
                 : NameSpaces.IF.getPath() + escapeTurtleObjectName(candidate);
     }
 
