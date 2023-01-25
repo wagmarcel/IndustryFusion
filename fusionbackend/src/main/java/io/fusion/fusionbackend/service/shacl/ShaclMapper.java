@@ -215,7 +215,7 @@ public class ShaclMapper {
 
     public ShaclShape mapFromAssetTypeTemplate(AssetTypeTemplate assetTypeTemplate) {
 
-        return new NodeShape(ShaclHelper.createIriIfNeeded(assetTypeTemplate.getName()))
+        return new NodeShape(ShaclHelper.createIriIfNeeded(assetTypeTemplate.getAssetType().getName()))
                 .addParameter(ShaclKeys.NAME, ShaclHelper.toValidText(assetTypeTemplate.getName()))
                 .addParameter(ShaclKeys.DESCRIPTION, ShaclHelper.toValidText(assetTypeTemplate.getDescription()))
                 .addParameter(IfsKeys.VERSION, assetTypeTemplate.getVersion())
@@ -383,7 +383,7 @@ public class ShaclMapper {
             AssetTypeTemplatePeer attp,
             Long orderId,
             ShaclHelper.LambdaWrapper<ShaclShape> executeAfter) {
-        final String iri = ShaclHelper.createHasClassIri(attp.getPeer().getName());
+        final String iri = ShaclHelper.createHasClassIri(attp.getPeer().getAssetType().getName());
 
         RelationshipShape shape = (RelationshipShape) new RelationshipShape(ShaclNodeKind.IRI, NgsiLdKeys.HAS_RELATIONSHIP.getPath());
         shape.addParameter(ShaclKeys.MIN_COUNT, 1)
