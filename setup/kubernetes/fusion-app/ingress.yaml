@@ -14,7 +14,7 @@ spec:
       paths:
       - backend:
           service:
-            name: gateway
+            name: scorpio-aaio
             port:
               number: 9090
         path: /ngsi-ld
@@ -25,6 +25,27 @@ spec:
             port:
               number: 8080
         path: /alerta
+        pathType: ImplementationSpecific
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oisp-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: oisp-remove-prefix@kubernetescrd
+  namespace: oisp
+spec:
+  rules:
+  - host: industryfusion.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: frontend
+            port:
+              number: 4003
+        path: /tsdb
         pathType: ImplementationSpecific
 ---
 apiVersion: networking.k8s.io/v1
@@ -75,3 +96,13 @@ spec:
   stripPrefix:
     prefixes:
     - /alerta
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: remove-prefix
+  namespace: oisp
+spec:
+  stripPrefix:
+    prefixes:
+    - /tsdb
