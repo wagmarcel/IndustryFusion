@@ -23,6 +23,7 @@ import io.fusion.fusionbackend.model.FieldTarget;
 import io.fusion.fusionbackend.model.Unit;
 import io.fusion.fusionbackend.model.shacl.enums.NameSpaces;
 
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -57,9 +58,10 @@ public class ShaclHelper {
 
     public static String createHasClassIri(String name) {
         if (isIri(name)) {
-            return name;
+            String stripped_name = stripRdfClassFromIri(name);
+            return NameSpaces.FIELD.getPath() + "has" + stripped_name;
         } else {
-            return NameSpaces.IF.getPath() + "has" + toCamelCase(escapeTurtleObjectName(name));
+            return NameSpaces.FIELD.getPath() + "has" + toCamelCase(escapeTurtleObjectName(name));
         }
     }
 
@@ -171,6 +173,24 @@ public class ShaclHelper {
         Set<T> ts = new HashSet<>();
         ts.add(t);
         return ts;
+    }
+
+    public static String stripRdfClassFromIri(String iri) {
+        String result = null;
+        try {
+            URL aUrl = new URL(iri);
+
+            String path = aUrl.getPath();
+            int lastslash = path.lastIndexOf('/');
+            result = (lastslash == -1) ? path : path.substring(lastslash + 1);
+            if (aUrl.getRef() != null) {
+                result = aUrl.getRef();
+            }
+        } catch(Exception e) {
+            System.out.println("Caught: " + e.getMessage());
+            result = "";
+        }
+        return result;
     }
 
 

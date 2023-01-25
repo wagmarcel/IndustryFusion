@@ -388,7 +388,7 @@ public class ShaclMapper {
         RelationshipShape shape = (RelationshipShape) new RelationshipShape(ShaclNodeKind.IRI, NgsiLdKeys.HAS_RELATIONSHIP.getPath());
         shape.addParameter(ShaclKeys.MIN_COUNT, 1)
                 .addParameter(ShaclKeys.MAX_COUNT, 1);
-        shape.addParameter(ShaclKeys.CLASS, ShaclHelper.createClassIri(attp.getPeer().getName()));
+        shape.addParameter(ShaclKeys.CLASS, ShaclHelper.createClassIri(attp.getPeer().getAssetType().getName()));
         if (executeAfter != null) {
             executeAfter.execute(shape);
         }
