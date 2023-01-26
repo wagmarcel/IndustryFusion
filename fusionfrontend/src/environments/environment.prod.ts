@@ -23,7 +23,7 @@ import { KeycloakConfig } from 'keycloak-js';
 export const environment = {
   production: false,
   apiUrlPrefix: '/fusionbackend',
-  kairosApiUrlPrefix: 'frontend.oisp:4003/api/v1',
+  kairosApiUrlPrefix: '/tsdb/api/v1',
   alertaApiUrlPrefix: '/alerta/api',
   alertaApiKey: 'YsMQtkPYGTcxhuzlV0Z5iJFjjgFRw3Px',
   alertsUpdateIntervalMs: 10000,
@@ -32,7 +32,7 @@ export const environment = {
   weatherApiUrl: 'https://api.openweathermap.org/data/2.5/weather?',
   weatherApiKey: 'PUT-YOUR-OPENWEATHERMAP-APIKEY-HERE',
   googleMapsClientId: 'PUT-YOUR-GOOGLEMAPS-CLIENTID-HERE',
-  ngsiLdBrokerUrl: 'http://industryfusion.local/ngsi-ld/v1/entities',
+  ngsiLdBrokerUrl: '/ngsi-ld/v1/entities',
   keycloakConfig: {
     url: 'http://keycloak.local/auth',
     realm: 'iff',
