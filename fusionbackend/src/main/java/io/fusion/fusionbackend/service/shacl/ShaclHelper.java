@@ -58,8 +58,8 @@ public class ShaclHelper {
 
     public static String createHasClassIri(String name) {
         if (isIri(name)) {
-            String stripped_name = stripRdfClassFromIri(name);
-            return NameSpaces.FIELD.getPath() + "has" + stripped_name;
+            String strippedName = stripRdfClassFromIri(name);
+            return NameSpaces.FIELD.getPath() + "has" + strippedName;
         } else {
             return NameSpaces.FIELD.getPath() + "has" + toCamelCase(escapeTurtleObjectName(name));
         }
@@ -178,15 +178,15 @@ public class ShaclHelper {
     public static String stripRdfClassFromIri(String iri) {
         String result = null;
         try {
-            URL aUrl = new URL(iri);
+            URL url = new URL(iri);
 
-            String path = aUrl.getPath();
+            String path = url.getPath();
             int lastslash = path.lastIndexOf('/');
             result = (lastslash == -1) ? path : path.substring(lastslash + 1);
-            if (aUrl.getRef() != null) {
-                result = aUrl.getRef();
+            if (url.getRef() != null) {
+                result = url.getRef();
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("Caught: " + e.getMessage());
             result = "";
         }

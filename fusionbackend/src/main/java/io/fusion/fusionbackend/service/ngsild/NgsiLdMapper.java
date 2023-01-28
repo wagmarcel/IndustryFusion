@@ -53,7 +53,8 @@ public class NgsiLdMapper {
         JsonObjectBuilder builder = Json.createObjectBuilder()
                 .add(NgsiLdKeys.ID.getPath(), asset.getExternalName())
                 .add(NgsiLdKeys.TYPE.getPath(),
-                        ShaclHelper.createIriIfNeeded(asset.getAssetSeries().getAssetTypeTemplate().getAssetType().getName()));
+                        ShaclHelper.createIriIfNeeded(asset.getAssetSeries().getAssetTypeTemplate()
+                                .getAssetType().getName()));
         asExtraProperty(builder, IfsKeys.SERIAL_NUMBER,
                         Optional.ofNullable(asset.getSerialNumber()).orElse(""));
         asExtraProperty(builder, IfsKeys.CONNECTION_STRING,
@@ -91,6 +92,7 @@ public class NgsiLdMapper {
                                  String value) {
         asProperty(builder, path.getPath(), value);
     }
+
     private void asExtraProperty(JsonObjectBuilder builder, BasicKeys path,
                                  Boolean value) {
         asProperty(builder, path.getPath(), value);
@@ -105,6 +107,7 @@ public class NgsiLdMapper {
                         .add(NgsiLdKeys.HAS_PATH.getPath(), value));
 
     }
+
     private void asProperty(JsonObjectBuilder builder,
                             String path,
                             Boolean value) {

@@ -18,8 +18,19 @@ package io.fusion.fusionbackend.service.shacl;
 import com.codepoetics.protonpack.StreamUtils;
 //CHECKSTYLE:OFF
 // CHECKSTYLE IGNORE check FOR NEXT 1 LINES
-import io.fusion.fusionbackend.model.*;
 //CHECKSTYLE:ON
+import io.fusion.fusionbackend.model.AssetSeries;
+import io.fusion.fusionbackend.model.AssetType;
+import io.fusion.fusionbackend.model.AssetTypeTemplate;
+import io.fusion.fusionbackend.model.AssetTypeTemplatePeer;
+import io.fusion.fusionbackend.model.ConnectivitySettings;
+import io.fusion.fusionbackend.model.Field;
+import io.fusion.fusionbackend.model.FieldOption;
+import io.fusion.fusionbackend.model.FieldSource;
+import io.fusion.fusionbackend.model.FieldTarget;
+import io.fusion.fusionbackend.model.QuantityType;
+import io.fusion.fusionbackend.model.Threshold;
+import io.fusion.fusionbackend.model.Unit;
 import io.fusion.fusionbackend.model.enums.FieldDataType;
 import io.fusion.fusionbackend.model.enums.FieldThresholdType;
 import io.fusion.fusionbackend.model.enums.FieldType;
@@ -385,7 +396,8 @@ public class ShaclMapper {
             ShaclHelper.LambdaWrapper<ShaclShape> executeAfter) {
         final String iri = ShaclHelper.createHasClassIri(attp.getPeer().getAssetType().getName());
 
-        RelationshipShape shape = (RelationshipShape) new RelationshipShape(ShaclNodeKind.IRI, NgsiLdKeys.HAS_RELATIONSHIP.getPath());
+        RelationshipShape shape = (RelationshipShape) new RelationshipShape(ShaclNodeKind.IRI,
+                NgsiLdKeys.HAS_RELATIONSHIP.getPath());
         shape.addParameter(ShaclKeys.MIN_COUNT, 1)
                 .addParameter(ShaclKeys.MAX_COUNT, 1);
         shape.addParameter(ShaclKeys.CLASS, ShaclHelper.createClassIri(attp.getPeer().getAssetType().getName()));
